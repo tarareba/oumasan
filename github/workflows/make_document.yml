@@ -1,0 +1,32 @@
+name: make document
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir output
+          echo "# test\n\nmessage!!" > output/test.md
+      - uses: actions/upload-artifact@v3
+        with:
+          name: document
+          path: output
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: output
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest 
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/deploy-pages@v1
+        id: deployment
