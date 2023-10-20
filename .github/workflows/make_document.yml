@@ -9,11 +9,8 @@ jobs:
     steps:
       - run: |
           mkdir output
-          echo "# test\n\nmessage!!" > output/test.md
-      - uses: actions/upload-artifact@v3
-        with:
-          name: document
-          path: output
+          echo "<a href='test.md'>test.md</a>" > output/index.html
+          echo "nmessage!!" > output/test.md
       - uses: actions/upload-pages-artifact@v1
         with:
           path: output
@@ -28,5 +25,5 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - uses: actions/deploy-pages@v1
+      - uses: actions/deploy-pages@v2
         id: deployment
