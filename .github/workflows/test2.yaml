@@ -1,4 +1,4 @@
-name: "[test] test2"
+name: "🌳 aaa"
 
 on:
   workflow_dispatch:
