@@ -1,4 +1,4 @@
-name: 📌 make document
+name: "📌 make document"
 
 on:
   workflow_dispatch:
